@@ -13,7 +13,7 @@ jobs:
       with:
         python-version: '3.9'
         
-    - name: Install Buildozer
+    - name: Install Buildozer cython
       run: |
         pip install buildozer
         sudo apt-get update
