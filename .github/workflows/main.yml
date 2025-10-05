@@ -8,12 +8,22 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Build with Buildozer
-      uses: ArtemSBulgakov/buildozer-action@v1
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        work-dir: ./
-        buildozer-version: stable
+        python-version: '3.9'
         
+    - name: Install Buildozer
+      run: |
+        pip install buildozer
+        sudo apt-get update
+        sudo apt-get install -y git autoconf build-essential libffi-dev libssl-dev python3-pip
+        
+    - name: Build APK
+      run: |
+        buildozer init
+        buildozer -v android debug
+      
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
