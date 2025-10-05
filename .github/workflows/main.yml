@@ -13,11 +13,11 @@ jobs:
       with:
         python-version: '3.9'
         
-    - name: Install Buildozer cython
+    - name: Install Buildozer
       run: |
-        pip install buildozer
         sudo apt-get update
-        sudo apt-get install -y git autoconf build-essential libffi-dev libssl-dev python3-pip
+        sudo apt-get install -y git autoconf build-essential libffi-dev libssl-dev python3-pip cython3
+        pip install buildozer cython
         
     - name: Build APK
       run: |
